@@ -3,29 +3,29 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./main.db" 
 }
 
 model MediaWikiRecentChange {
   id        Int      @id @default(autoincrement())
-  title     String?  @db.Text
-  titleUrl  String?  @db.Text
-  comment   String?  @db.Text
+  title     String?  
+  titleUrl  String? 
+  comment   String?
   timestamp DateTime @default(now())
-  user      String?  @db.Text
+  user      String?
   bot       Boolean?
-  notifyUrl String?  @db.Text
-  fullEdit  String?  @db.Text
+  notifyUrl String?
+  fullEdit  String?
   minor     Boolean?
   lengthOld Int?
   lengthNew Int?
-  serverUrl String?  @db.Text
+  serverUrl String?
 }
 
 model MediaWikiRecentChangeSpike {
   id           Int      @id @default(autoincrement())
-  title        String   @db.Text
+  title        String   
   startTime    DateTime
   lastEditTime DateTime
   totalEdits   Int      @default(0)

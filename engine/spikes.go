@@ -11,14 +11,13 @@ import (
 
 type ArticleMetrics struct {
 	Title     string
-	Edits     int       // number of edits so far (recent window)
-	Bytes     int       // total bytes changed so far (recent window)
-	LastEdit  time.Time // last edit timestamp
-	InSpike   bool      // whether a spike is currently active for this article
-	StartTime time.Time // when the current spike started, if any
+	Edits     int       
+	Bytes     int       
+	LastEdit  time.Time 
+	InSpike   bool      
+	StartTime time.Time 
 }
 
-// SpikePayload represents the data we send to the API
 type SpikePayload struct {
 	Title        string    `json:"title"`
 	StartTime    time.Time `json:"startTime"`
@@ -28,19 +27,16 @@ type SpikePayload struct {
 	IsActive     bool      `json:"isActive"`
 }
 
-// allArticleMetrics tracks each article's metrics in memory.
 var allArticleMetrics map[string]*ArticleMetrics
 
-// spikeQueue is a channel for queuing spike updates
 var spikeQueue chan *ArticleMetrics
 
-// Example weighting/threshold constants:
 const (
-	SPIKE_WEIGHTED_THRESHOLD    = 5000            // Combined threshold for weighted score
-	SPIKE_INACTIVITY_DURATION  = 10 * time.Minute // Only end spike after no edits for 10 minutes
-	WEIGHT_BYTES               = 0.2              // Lower weight for bytes in the weighted score
-	WEIGHT_EDITS               = 0.8              // Higher weight for edit count in the weighted score
-	EDIT_COUNT_POINTS_PER_EDIT = 500             // Pseudo "points" for each edit
+	SPIKE_WEIGHTED_THRESHOLD    = 5000            
+	SPIKE_INACTIVITY_DURATION  = 10 * time.Minute 
+	WEIGHT_BYTES               = 0.2              
+	WEIGHT_EDITS               = 0.8              
+	EDIT_COUNT_POINTS_PER_EDIT = 500             
 )
 
 var SPIKE_API_ENDPOINT string

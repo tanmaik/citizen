@@ -22,13 +22,3 @@ model WikiEdit {
   lengthNew Int?
   serverUrl String?  @db.Text
 }
-
-model WikiEditSpike {
-  id           Int      @id @default(autoincrement())
-  title        String   @db.Text
-  startTime    DateTime
-  lastEditTime DateTime
-  totalEdits   Int      @default(0)
-  totalBytes   Int      @default(0)
-  isActive     Boolean  @default(true)
-}

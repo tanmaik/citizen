@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <nav className="flex justify-between items-end py-4 border-b">
       <div className="text-left">
-        <button className="font-bold">sign in</button>
+        <button className="">sign in</button>
       </div>
       <div className="text-center">
         <h1 className="font-bold">pulse</h1>

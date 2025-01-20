@@ -8,5 +8,5 @@
 </p>
 
 <p align="center">
-  <strong>pulse</strong> is an ai-powered intelligence platform 
+  the <strong>NEW</strong> front page of the internet
 </p>

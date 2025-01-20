@@ -7,18 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model WikiEdit {
-  id        Int      @id @default(autoincrement())
-  title     String?  @db.Text
-  titleUrl  String?  @db.Text
-  comment   String?  @db.Text
-  timestamp DateTime @default(now())
-  user      String?  @db.Text
-  bot       Boolean?
-  notifyUrl String?  @db.Text
-  fullEdit  String?  @db.Text
-  minor     Boolean?
-  lengthOld Int?
-  lengthNew Int?
-  serverUrl String?  @db.Text
+model WikipediaEdit {
+  id            Int    @id @default(autoincrement())
+  notifyUrl     String @unique
+  title         String
+  titleUrl      String
+  comment       String
+  timestamp     Int
+  user          String
+  bot           Boolean
+  minor         Boolean
+  lengthOld     Int
+  lengthNew     Int
+  serverName    String
+  wiki          String
+  parsedComment String
 }

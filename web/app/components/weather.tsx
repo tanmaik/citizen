@@ -51,7 +51,7 @@ export default function Weather() {
 
   if (loading || error) {
     return (
-      <p className="text-right">
+      <p className="mt-2">
         {error ? "error" : "loading"}
         <br />
         ??°F
@@ -60,7 +60,7 @@ export default function Weather() {
   }
 
   return (
-    <p className="text-right">
+    <p className="mt-2">
       {weather.description}
       <br />
       {weather.temperature}

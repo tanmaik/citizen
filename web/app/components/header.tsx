@@ -1,10 +1,10 @@
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Weather from "./weather";
+import DateDisplay from "./date-display";
 
 export default async function Header() {
   const user = await currentUser();
-  console.log(user);
 
   return (
     <nav className="flex justify-between items-end py-4 border-b">
@@ -19,15 +19,7 @@ export default async function Header() {
       </div>
       <div className="text-center">
         <h1 className="font-bold">pulse</h1>
-        <p>
-          {new Date()
-            .toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-            })
-            .toLowerCase()}
-        </p>
+        <DateDisplay />
       </div>
       <div>
         <Weather />
